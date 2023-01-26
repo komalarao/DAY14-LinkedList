@@ -75,7 +75,7 @@ public class LinkedList {
 		}
 
 	}
-void push_at( int position,Object data) {  
+ void push_at( int position,Object data) {  
 		
 	    Node newNode = new Node(data); 
 	    newNode.ref = null;
@@ -102,7 +102,19 @@ void push_at( int position,Object data) {
 	        System.out.print("\nThe previous node is null.");
 	      }       
 	    }
-	  } 
+ }
+ public void deleteParticularPosition(Object data) {
+		int index = 0;
+		Node left = head;
+		Node right = left.ref;
+		while (right.data != data) {
+			left = left.ref;
+			right = right.ref;
+			index++;
+
+		}
+		left.ref = right.ref;
+	}
 
 	public static void main(String args[]) {
 
@@ -115,12 +127,14 @@ void push_at( int position,Object data) {
 
 		call.append(70);
 		call.display();
-
-		call.search(30);
 		
 		call.push_at(3,40);
 		call.display();
-
+		
+		call.search(40);
+		
+		call.deleteParticularPosition(40);
+        call.display();
 
 	}
 
