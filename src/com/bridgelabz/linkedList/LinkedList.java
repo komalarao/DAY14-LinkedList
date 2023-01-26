@@ -35,31 +35,32 @@ public class LinkedList {
 		}
 	}
 
-	public void addFirst(Object data) {
+	public void append(Object data) {
 
 		Node newNode = new Node(data);
-	       
-        if(head == null)
-            head=newNode;
-        else
-        {
-            Node temp = head;
-            head = newNode;
-            head.ref = temp;
-           
-        }
+		if (head == null) {
+			head = newNode;
+		} else if (head.ref == null) {
+			head.ref = newNode;
+		} else {
+			Node temp = head;
+			while (temp.ref != null) {
+				temp = temp.ref;
+			}
+			temp.ref = newNode;
+		}
 	}
 
 	public static void main(String args[]) {
 
 		LinkedList call = new LinkedList();
-		call.addFirst(70);
+		call.append(56);
         call.display();
         
-		call.addFirst(30);
+		call.append(30);
         call.display();
 
-		call.addFirst(56);
+		call.append(70);
 		call.display();
 
 	}
