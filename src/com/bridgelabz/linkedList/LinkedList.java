@@ -51,45 +51,33 @@ public class LinkedList {
 		}
 	}
 
-	void push_at( int position,Object data) {  
-		
-	    Node newNode = new Node(data); 
-	    newNode.ref = null;
-
-	    if(position < 1) {
-	      System.out.print("\nposition should be >= 1.");
-	    } else if (position == 1) {
-	      newNode.ref = head;
-	      head = newNode;
-	    } else {
-	      
-	      Node temp = new Node(data);
-	      temp = head;
-	      for(int i = 1; i < position-1; i++) {
-	        if(temp != null) {
-	          temp = temp.ref;
+	 public void deleteFirst()
+	    {
+	        if(head == null)
+	            System.out.println("No elements to delete...");
+	        else if(head.ref == null)
+	            head = null;
+	        else
+	        {
+	           
+	            Node temp=head.ref;
+	            head=temp;
+	           
 	        }
-	      }
-	   
-	      if(temp != null) {
-	        newNode.ref = temp.ref;
-	        temp.ref = newNode;  
-	      } else {
-	        System.out.print("\nThe previous node is null.");
-	      }       
 	    }
-	  } 
-
 	public static void main(String args[]) {
 
 		LinkedList call = new LinkedList();
 		call.append(56);
         call.display();
         
-		call.append(70);
+		call.append(30);
         call.display();
 
-		call.push_at(2,30);
+        call.append(70);
+        call.display();
+        
+		call.deleteFirst();
 		call.display();
 
 	}
